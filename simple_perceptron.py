@@ -57,13 +57,13 @@ class Perceptron:
 		while(misclass):
 			#obtain a set of misclassified points
 			misclass_points = []	#array of indexes of misclassified points in data
-			for point in data:
+			for point in self.data:
 				if not self.classify(point):
-					misclass_points.append(data.index(point))
+					misclass_points.append(self.data.index(point))
 
 			if len(misclass_points)!=0:
 				#choose the misclassified point at random
-				p = data[random.choice(misclass_points)]
+				p = self.data[random.choice(misclass_points)]
 				x_adj = [1.0] + p[0]
 				# w <- w + yx	where (x,y) is a misclassified point
 				x_sign = [p[1]*xi for xi in x_adj]
