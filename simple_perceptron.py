@@ -1,6 +1,7 @@
 import math
 import random
 import operator
+import numpy as np
 
 class Perceptron:
 	'''
@@ -11,15 +12,20 @@ class Perceptron:
 	List data			Array (N x 1) of tuples (x, y) composed of vectors x and results y=f(x)
 	int iterations		Number of iterations of PLA undergone
 	'''
-	def __init__(self, dim, data):
+	def __init__(self, dim, data = []):
 		self.dim = dim
 		self.reset(data)
 
-	def reset(self, data):
+	def reset(self, data, weights = [0]):
 		'''
 		Reset weights and iterations and feed a data sample
 		'''
-		self.weights = [0.0] * (self.dim+1)
+		if np.all(weights == [0]):
+			self.weights = [0.0] * (self.dim+1)
+		elif len(weights)!=(self.dim+1):
+			raise ValueError('Wrong initial weights dimensionality')
+		else:
+			self.weights = weights
 		for t in data:
 			if len(t[0])!=self.dim:
 				raise ValueError('Wrong data dimensionality')
