@@ -3,4 +3,7 @@ Implementations of Machine Learning algorithms.
 
 
 # simple_perceptron
-A python module to run the Perceptron Learning Algorithm on n-dimensional datasets to approximate a function which maps points to either +1 or -1.
+A python module to run the Perceptron Learning Algorithm on n-dimensional datasets to solve classification problems.
+
+# linear_regression
+A python module to solve classification and regression problems using Linear Regression. Requires numpy.
