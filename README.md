@@ -7,3 +7,6 @@ Implements the Perceptron Learning Algorithm on n-dimensional datasets for solvi
 
 # linear_regression
 Implements Linear Regression on n-dimensional datasets for solving classification and regression problems. Requires numpy.
+
+# logistic_regression
+Implements Logistic Regression with Stochastic Gradient Descent on n-dimensional datasets for classification problems. Requires numpy.
