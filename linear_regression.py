@@ -4,20 +4,22 @@ import numpy as np
 
 class Regression:
 	'''
-	Implements Linear Regression
+	Implements Linear Regression with Weight Decay Regularization
 	fields:
 	int dim				Dimensionality of the data
+	int lam 			Regularization factor
 	List weights		numpy ndarray (dim x 1) of the weights
 	List data			Array (N x 1) of tuples (x, y) composed of vectors x and results y=f(x)
 	'''
-	def __init__(self, dim, data = []):
+	def __init__(self, dim, data = [], lam = 0):
 		self.dim = dim
-		self.reset(data)
+		self.reset(data, lam)
 
-	def reset(self, data):
+	def reset(self, data, lam = 0):
 		'''
-		Reset weights and feed a data sample
+		Reset weights and lambda and feed a data sample
 		'''
+		self.lam = lam
 		self.weights = np.zeros(self.dim+1)
 		for t in data:
 			if len(t[0])!=self.dim:
@@ -63,7 +65,9 @@ class Regression:
 			target_vector.append([point[1]])		#Create the target vector y of f(x) values for the x inputs
 		target_vector = np.matrix(target_vector)
 
-		self.weights = np.array(np.transpose(np.linalg.pinv(data_matrix) * target_vector))
+		reg_pinv = np.linalg.inv((np.transpose(data_matrix)*data_matrix) + (self.lam*np.matrix(np.identity(self.dim+1))))*np.transpose(data_matrix)
+
+		self.weights = np.array(np.transpose(reg_pinv * target_vector))
 
 
 	def classify(self, point):
