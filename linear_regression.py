@@ -8,7 +8,7 @@ class Regression:
 	fields:
 	int dim				Dimensionality of the data
 	int lam 			Regularization factor
-	List weights		numpy ndarray (dim x 1) of the weights
+	ndarray weights		numpy ndarray (dim+1 x 1) of the weights
 	List data			Array (N x 1) of tuples (x, y) composed of vectors x and results y=f(x)
 	'''
 	def __init__(self, dim, data = [], lam = 0):

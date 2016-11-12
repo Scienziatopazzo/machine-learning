@@ -8,7 +8,7 @@ class Perceptron:
 	Implements the Perceptron Learning Algorithm
 	fields:
 	int dim				Dimensionality of the data
-	List weights		Array (dim x 1) of the weights
+	List weights		Array (dim+1 x 1) of the weights
 	List data			Array (N x 1) of tuples (x, y) composed of vectors x and results y=f(x)
 	int iterations		Number of iterations of PLA undergone
 	'''
